@@ -1,3 +1,4 @@
 ﻿  main.cpp
+c:\users\itsadmin\documents\visual studio 2015\projects\dx11entrypoint\dx11entrypoint\main.cpp(11): warning C4715: 'WindowProc': not all control paths return a value
   DX11EntryPoint.vcxproj -> c:\users\itsadmin\documents\visual studio 2015\Projects\DX11EntryPoint\Debug\DX11EntryPoint.exe
   DX11EntryPoint.vcxproj -> c:\users\itsadmin\documents\visual studio 2015\Projects\DX11EntryPoint\Debug\DX11EntryPoint.pdb (Partial PDB)
