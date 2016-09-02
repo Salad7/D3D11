@@ -1,5 +1,4 @@
 #include <Windows.h>
-#include <d2d1.h>
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -7,7 +6,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 		PostQuitMessage(0); return 0;
 	}
-	DefWindowProc(hwnd, uMsg, wParam, lParam);
+	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 };
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR cmd, int cmdShow)
@@ -21,8 +20,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR cmd, in
 	windowClass.lpszClassName = "MainWindow";
 	windowClass.style = CS_HREDRAW | CS_VREDRAW;
 	RegisterClassEx(&windowClass);
+	RECT rect = {0,0,800,600};
+	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
-	HWND windowHandle = CreateWindowEx(WS_EX_ACCEPTFILES, "MainWindow", "DirectX Tute!", WS_OVERLAPPEDWINDOW, 100, 100, 800, 600, NULL, NULL, hInstance, 0);
+	HWND windowHandle = CreateWindowEx(WS_EX_ACCEPTFILES, "MainWindow", "DirectX Tute!", WS_OVERLAPPEDWINDOW, 100, 100, rect.right - rect.left, rect.bottom - rect.top, NULL, NULL, hInstance, 0); 
+	
 	if (!windowHandle) return -1;
 	ShowWindow(windowHandle, cmdShow);
 	MSG message;
